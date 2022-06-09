@@ -6,18 +6,24 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ParkingSpotService {
 
     final ParkingSpotRepository parkingSpotRepository;
 
-    public ParkingSpotService(ParkingSpotRepository parkingSpotRepository){
+    public ParkingSpotService(ParkingSpotRepository parkingSpotRepository) {
         this.parkingSpotRepository = parkingSpotRepository;
     }
 
     public List<ParkingSpotModel> findAll() {
         return parkingSpotRepository.findAll();
+    }
+
+    public Optional<ParkingSpotModel> findById(UUID id) {
+        return parkingSpotRepository.findById(id);
     }
 
     @Transactional
@@ -34,8 +40,6 @@ public class ParkingSpotService {
     }
 
     public boolean existsByApartmentAndBlock(String apartment, String block) {
-        return parkingSpotRepository.existsByApartmentAndBlock(apartment,block);
+        return parkingSpotRepository.existsByApartmentAndBlock(apartment, block);
     }
-
-
 }
