@@ -31,6 +31,10 @@ public class ParkingSpotService {
         return parkingSpotRepository.save(parkingSpotModel);
     }
 
+    public void delete(ParkingSpotModel parkingSpotModel) {
+        parkingSpotRepository.delete(parkingSpotModel);
+    }
+
     public boolean existsByLicensePlateCar(String licensePlateCar) {
         return parkingSpotRepository.existsByLicensePlateCar(licensePlateCar);
     }
@@ -42,4 +46,6 @@ public class ParkingSpotService {
     public boolean existsByApartmentAndBlock(String apartment, String block) {
         return parkingSpotRepository.existsByApartmentAndBlock(apartment, block);
     }
+
+
 }
